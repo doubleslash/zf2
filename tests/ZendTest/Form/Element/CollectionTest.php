@@ -707,6 +707,9 @@ class CollectionTest extends TestCase
 
         //test for object binding
         foreach ($form->get('main')->getFieldsets() as $_fieldset) {
+            $_fieldsets = $_fieldset->getFieldsets();
+            // test for nested fieldsets exists
+            $this->assertNotEmpty($_fieldsets);
             foreach($_fieldset->getFieldsets() as $_nestedfieldset) {
                 $this->assertInstanceOf('ZendTest\Form\TestAsset\Entity\Product', $_nestedfieldset->get('products')->getObject());
             }
